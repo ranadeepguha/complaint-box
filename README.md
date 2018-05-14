@@ -14,7 +14,11 @@ Database: Amazon DynamoDB
 
 
 
-How to run this project:
+
+
+
+
+                                             How to run this project:
 
 1. Clone the repository
 2. Open AWS Console and create two lambda functions: dynamoDBRead and dynamoDBWrite
