@@ -1,0 +1,81 @@
+    <!DOCTYPE html>
+    <html>
+    <head>
+    <script src = "js/angular.min.js"></script>
+    <script src = "js/search.js"></script>
+
+    </head>
+
+    <body background="./img/roof.jpg" ng-app = "SearchApp">
+    <div ng-controller="SearchController">
+    <span><h1>Search a Complaint</h1>
+    </span>
+        <span>
+    <h3>
+    Your IP Address is: {{IP}}
+    </h3>
+        </span>
+
+
+    <div class="textarea">
+    <span> Region: <input type="text" ng-model="newSearch.state"></span>
+    <span> City: <input type="text" ng-model="newSearch.city"></span>
+    <span> Country: <input type="text" ng-model="newSearch.country"></span>
+        <span> IP: <input type="text" ng-model="newSearch.ip"></span>
+    </div>
+    <br>
+
+    <br>
+    <br>
+    <table border = "1" style="width:100%">
+            <tr>
+            <td>Complaint</td>
+            <td>IP</td>
+            <td>Region</td>
+            <td>City</td>
+            <td>Country</td>
+            </tr>
+
+        <!--Loops over the set of messages and displays the results in the table if the search result matches-->
+            <tbody ng-repeat="msg in messages">
+                <tr ng-repeat="submsg in msg" ng-if="submsg.city == newSearch.city " >
+                <td>{{submsg.message}}</td>
+                <td>{{submsg.ip}}</td>
+                <td>{{submsg.region}}</td>
+                <td>{{submsg.city}}</td>
+                <td>{{submsg.country}}</td>
+            </tr>
+
+            <tr ng-repeat="submsg in msg" ng-if="submsg.region ==newSearch.state" >
+                <td>{{submsg.message}}</td>
+                <td>{{submsg.ip}}</td>
+                <td>{{submsg.region}}</td>
+                <td>{{submsg.city}}</td>
+                <td>{{submsg.country}}</td>
+            </tr>
+                <tr ng-repeat="submsg in msg" ng-if="submsg.country ==newSearch.country" >
+                <td>{{submsg.message}}</td>
+                <td>{{submsg.ip}}</td>
+                <td>{{submsg.region}}</td>
+                <td>{{submsg.city}}</td>
+                <td>{{submsg.country}}</td>
+            </tr>
+                <tr ng-repeat="submsg in msg" ng-if="submsg.ip ==newSearch.ip" >
+                    <td>{{submsg.message}}</td>
+                    <td>{{submsg.ip}}</td>
+                    <td>{{submsg.region}}</td>
+                    <td>{{submsg.city}}</td>
+                    <td>{{submsg.country}}</td>
+                </tr>
+
+
+
+            </tbody>
+    </table>
+
+
+
+    </div>
+    </body>
+
+    </html>
