@@ -1,4 +1,4 @@
-                                    **Complaint Box**
+                                                  Complaint Box
 
 A web application which takes user complaints as input and stores it in the DynamoDB along with the user's IP Address.
 The user can then search for complaints using either the city, state or IP Address to get the list of complaints that were posted from that region
