@@ -4,9 +4,15 @@ A web application which takes user complaints as input and stores it in the Dyna
 The user can then search for complaints using either the city, state or IP Address to get the list of complaints that were posted from that region
 
 Frontend: HTML, Angular JS,JQuery and AJAX 
+
 Backend: Lambda Using Node
-APIs: Created using API Gateway and Lambda
+
+APIs: Created using API Gateway and Lambda, Google Maps, ip-api
+
 Database: Amazon DynamoDB
+
+
+
 
 How to run this project:
 
