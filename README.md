@@ -1,14 +1,24 @@
-                                    **Complaint Box**
+                                                  Complaint Box
 
 A web application which takes user complaints as input and stores it in the DynamoDB along with the user's IP Address.
 The user can then search for complaints using either the city, state or IP Address to get the list of complaints that were posted from that region
 
 Frontend: HTML, Angular JS,JQuery and AJAX 
+
 Backend: Lambda Using Node
-APIs: Created using API Gateway and Lambda
+
+APIs: Created using API Gateway and Lambda, Google Maps, ip-api
+
 Database: Amazon DynamoDB
 
-How to run this project:
+
+
+
+
+
+
+
+                                             How to run this project:
 
 1. Clone the repository
 2. Open AWS Console and create two lambda functions: dynamoDBRead and dynamoDBWrite
@@ -17,3 +27,4 @@ How to run this project:
 5. Run index.html 
 
 
+Website: http://www.complaintbox.ranadeep.com.s3-website-us-west-2.amazonaws.com

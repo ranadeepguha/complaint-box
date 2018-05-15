@@ -5,6 +5,32 @@ var map;
 
 var app1 = angular.module("ComplaintApp",[]);
 
+//Input Sanitization
+var tagBody = '(?:[^"\'>]|"[^"]*"|\'[^\']*\')*';
+
+var tagOrComment = new RegExp(
+    '<(?:'
+    // Comment body.
+    + '!--(?:(?:-*[^->])*--+|-?)'
+    // Special "raw text" elements whose content should be elided.
+    + '|script\\b' + tagBody + '>[\\s\\S]*?</script\\s*'
+    + '|style\\b' + tagBody + '>[\\s\\S]*?</style\\s*'
+    // Regular name
+    + '|/?[a-z]'
+    + tagBody
+    + ')>',
+    'gi');
+function removeTags(html) {
+    var oldHtml;
+    do {
+        oldHtml = html;
+        html = html.replace(tagOrComment, '');
+    } while (html !== oldHtml);
+    return html.replace(/</g, '&lt;');
+}
+
+
+
 app1.controller("ComplaintController",function($scope, $http){
 
     //Fetch all the messages from DynamoDB using an API created in API Gateway and store it in the scope variable "messages"
@@ -16,7 +42,7 @@ app1.controller("ComplaintController",function($scope, $http){
 	//Adds a new complaint to DynamoDB
 
 	$scope.addComplaint = function(newComplaint){
-		var upJSON= {"message": newComplaint.message, "IP": $scope.ip , "region": $scope.region, "city": $scope.city, "country": $scope.country }; //create a message
+		var upJSON= {"message": removeTags(newComplaint.message), "IP": $scope.ip , "region": $scope.region, "city": $scope.city, "country": $scope.country }; //create a message
 
         $http.post("https://someapi/prod/entries", upJSON) //API created using API Gateway to enter data in dynamodb using Lambda
 		.then(function(response){
