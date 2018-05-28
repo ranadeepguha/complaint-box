@@ -12,8 +12,13 @@ APIs: Created using API Gateway and Lambda, Google Maps, ip-api
 Database: Amazon DynamoDB
 
 
+                                                 Features
+1. No sign up required for posting complaints
+2. Complaints can be searched based on City, State or Country
+3. Users can be identified using their IP Addresses
+4. Google Maps API displays the location from where the complaint originated
 
-
+    
 
 
 
